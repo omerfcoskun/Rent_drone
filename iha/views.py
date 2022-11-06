@@ -43,7 +43,7 @@ def addIha(request):
 
 
 def detail(request,id):
-    #article =Article.objects.filter(id=id).first
+    
     iha=get_object_or_404(Iha,id=id)
     return render(request,"detail.html",{"iha":iha})
 
