@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<h3>Kontrol Paneli</h3>
+<hr>
+<p>
+    Hoşgeldiniz,<small>{{request.user.username}}</small>
+</p>
+<hr>
+<a class="btn btn-danger" href ="/ihas/addiha">Ürün  Ekle</a>
+<hr>
+{% if ihas %}
+<table class="table">
+  <thead>
+    <tr>
+      
+      <th scope="col">Marka</th>
+      
+      <th scope="col">Model</th>
+      <th scope="col">Ağırlık</th>
+      <th scope="col">Kategori</th>
+      <th scope="col">Guncelle</th>
+      <th scope="col">Sil</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for iha in ihas %}
+      
+      <tr>
+          
+          
+          <td><a href="/ihas/iha/{{iha.id}}">{{iha.marka}}</a></td>
+          
+          <td>{{iha.model}}</td>
+          
+          <td>{{iha.weight}}</td>
+          <td>{{iha.category}}</td>
+          <td><a href="/ihas/update/{{iha.id}}" class ="btn btn-primary">Güncelle</a></td>
+          <td><a href="/ihas/delete/{{iha.id}}" class="btn btn-danger">Sil</a></td>
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<div class="alet alert-danger">Henüz Ürün eklemediniz</div>
+{% endif %}
+
+
+{% endblock body %}
+
+
+

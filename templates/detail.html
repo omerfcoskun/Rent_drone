@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<div class="row">
+
+    <div class="col-lg-8">
+
+   
+      <h3 class="mt-4">{{iha.marka}}</h3>
+
+      {% if iha.image %}
+      <img class="img-fluid rounded" src="{{iha.image.url}}" alt="">
+      
+      {% endif %}
+      
+      <hr>
+      <p class="lead">
+        {{iha.marka|safe}}
+      </p>
+      <hr>
+      <p class="lead"> 
+        {{iha.model|safe}}
+      </p>
+      <hr>
+      <p class="lead"> 
+        {{iha.category|safe}}
+      </p>
+
+      <hr>
+      <p class="lead"> 
+        {{iha.weight|safe}}
+      </p>
+
+    </div>
+
+    </div>
+
+  </div>
+{% endblock body %}

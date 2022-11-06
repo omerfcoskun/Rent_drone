@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<h3>Ürünler</h3>
+<hr>
+
+{% if ihas %}
+
+<form class="form-inline mt-2 mt-md-0">
+  {% csrf_token %}
+  <input class="form-control mr-sm-2" type="text" name = "keyword" placeholder="Aradığınız Ürünü girin..." aria-label="Search">
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Ara</button>
+</form>
+{% for  iha in ihas %}
+
+
+<div class="row">
+    
+
+
+    <div class="col-lg-8">
+      
+
+      
+      <h2 class="mt-4">{{iha.marka}}</h2>
+      
+      
+      {% if iha.image %}
+      <img class="img-fluid rounded" src="{{iha.image.url}}" alt="">
+      
+      {% endif %}
+
+      <hr>
+
+   
+      <p class="lead">
+       MODEL: {{iha.model|safe}}
+      </p>
+      <hr>
+      <p class="lead">
+       AĞIRLIK: {{iha.weight|safe}}
+      </p>
+      <hr>
+      <p class="lead">
+        KATEGORİ: {{iha.category|safe}}
+      </p>
+  
+      <a class="btn btn-primary" href ="/ihas/iha/{{iha.id}}">Kirala</a>
+      <br>
+      <br>
+     
+
+    </div>
+
+    </div>
+{% endfor %}
+{% else %}
+<div class ="alert aler-danger">
+    Ürün Bulunamadı
+</div>
+{% endif %}
+
+{% endblock body %}
+
+
+
+
+

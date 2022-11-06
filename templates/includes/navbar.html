@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <a class="navbar-brand" href="{% url 'index'  %}">Rent Iha</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+      {% if request.user.is_authenticated  %}
+      <li class="nav-item active">
+        <a class="nav-link" href="/ihas/dashboard">Kontrol Paneli</a>
+      </li>
+      
+      {% else %}
+      <li class="nav-item active">
+        <a class="nav-link" href="/user/login">Giriş Yap</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/user/register">Kayıt ol</a>
+      </li>
+      {% endif %}
+      
+
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'iha:ihas' %}">Ürünler<span class="sr-only">(current)</span></a>
+        </li>
+        
+       
+        
+        
+        
+      </ul>
+    </ul>
+    
+      
+    </div>
+    <div class="navbar-collapse collapse w-50 order-3 dual-collapse2">
+      <ul class="navbar-nav ml-auto">
+          
+          <li class="nav-item active">
+              <a class="nav-link" href="/ihas/dashboard">Hoşgeldin {{request.user.username}}</a>
+          </li>
+          {% if request.user.is_authenticated  %}
+          <li class="nav-item active">
+            <a class="nav-link" href="/user/logout">Çıkış Yap</a>
+          </li>
+          {% else %}
+          {% endif %}
+      </ul>
+  </div>
+    
+    
+  </nav>
+
+  <p>
+    {% if request.user.is_authenticated  %}
+    Giriş Yapılmış,{{request.user.username}}
+    
+    {% else %}
+    Giriş Yapılmamış
+    {% endif %}
+</p>
