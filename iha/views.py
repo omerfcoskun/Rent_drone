@@ -18,10 +18,6 @@ def ihas(request):
 def index(request):
     return render(request,"index.html")
 
-
-def about(request):
-    return render(request,"about.html")
-
 @login_required(login_url = "user:login")
 def dashboard(request):
     ihas=Iha.objects.filter(author=request.user)
@@ -69,8 +65,3 @@ def deleteIha(request,id):
     iha.delete()
     messages.success(request,"Ürün Silindi..")
     return redirect("iha:dashboard")
-    
-    
-    
-    
-    
